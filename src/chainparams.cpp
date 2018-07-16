@@ -79,7 +79,7 @@ public:
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nNonce   = 61043;
 
-if (true && (genesis.GetHash() != hashGenesisBlock)) {
+
 
 
 
