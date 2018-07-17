@@ -36,7 +36,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Spectrum address (e.g. LdAXWq4nGdsQgRqvkUJNiCN5yqVbqb445H)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Spectrum address (e.g. SRZ316yzohq2v8WBPH8xV7sB4DEAaDPgaw)"));
 #endif
 
     addEntry();
