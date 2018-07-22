@@ -65,12 +65,13 @@ public:
       //  genesis.hashMerkleRoot = a75626b6ceab2dd26b392b7163abf9b9028a4f278f327f509dcaffd9174812fe
 
         const char* pszTimestamp = "Spectrum gen block on july 14th 2018";
-        CTransaction txNew;
-        txNew.nTime = 1531589961;
-        txNew.vin.resize(1);
-        txNew.vout.resize(1);
-        txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].SetEmpty();
+        std::vector<CTxIn> vin;
+        vin.resize(1);
+        vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+        std::vector<CTxOut> vout;
+        vout.resize(1);
+        vout[0].SetEmpty();
+        CTransaction txNew(1, 1531589961, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
