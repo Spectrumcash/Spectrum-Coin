@@ -2,7 +2,7 @@
 
 ![Spectrum](logo.png)
 
-Spectrum is a PoW-PoS-based cryptocurrency.
+Spectrum is a Masternode-PoW-PoS-based cryptocurrency.
 
 Block Spacing: `90 Seconds`
 
@@ -13,3 +13,5 @@ Stake Maximum Age: `Unlimited`
 Port: `44820`
 
 RPC Port: `44821`
+
+Masternode requires: 10 millions
