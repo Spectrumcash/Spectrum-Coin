@@ -1144,13 +1144,13 @@ int64_t GetProofOfWorkReward(int64_t nFees, unsigned int nHeight)
     {
         nSubsidy = 0 * COIN; // No reward block to prevent an instamine
     }
-    else if(pindexBest->nHeight >= REWARD_START)
+    else if(pindexBest->nHeight < REWARD_HALVE)
     {
         nSubsidy = 6000 * COIN;
     }
     else if(pindexBest->nHeight >= REWARD_HALVE)
     {
-        nSubsidy = 50 * COIN;
+        nSubsidy = 5 * COIN;
     }
 
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
