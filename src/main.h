@@ -26,7 +26,7 @@ static const int64_t DARKSEND_POOL_MAX = (1111.99*COIN);
 static const int MASTERNODE_BLOCK = 300;
 static const int FAIR_LAUNCH_BLOCK = 301;
 static const int REWARD_START = 302;
-static const int REWARD_HALVE = 20000;
+static const int REWARD_HALVE = 21000;
 
 /*
     At 15 signatures, 1/2 of the masternode network can be owned by
@@ -290,12 +290,11 @@ public:
     {
         SetNull();
     }
-
-  CTransaction(int nVersion, unsigned int nTime, const std::vector<CTxIn>& vin, const std::vector<CTxOut>& vout, unsigned int nLockTime)
+    CTransaction(int nVersion, unsigned int nTime, const std::vector<CTxIn>& vin, const std::vector<CTxOut>& vout, unsigned int nLockTime)
             : nVersion(nVersion), nTime(nTime), vin(vin), vout(vout), nLockTime(nLockTime), nDoS(0)
         {
         }
-    
+
     IMPLEMENT_SERIALIZE
     (
         READWRITE(this->nVersion);
