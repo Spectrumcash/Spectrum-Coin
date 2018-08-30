@@ -1,6 +1,8 @@
 #ifndef MASTERNODEMANAGER_H
 #define MASTERNODEMANAGER_H
 
+include "masternode.h"
+
 #include <QWidget>
 #include <QTimer>
 
@@ -38,7 +40,11 @@ private:
     ClientModel *clientModel;
     WalletModel *walletModel;
 
-private slots:
+
+ void updateNodeListRow(CMasterNode *mn, std::vector<pair<unsigned int, CTxIn>>& vecMasternodeScores, int mnRow, const QString addr);
+
+
+private slots: 
 };
 
 #endif // MASTERNODEMANAGER_H
