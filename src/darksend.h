@@ -45,7 +45,7 @@ extern CDarkSendSigner darkSendSigner;
 extern std::vector<CDarksendQueue> vecDarksendQueue;
 extern std::string strMasterNodePrivKey;
 extern map<uint256, CDarksendBroadcastTx> mapDarksendBroadcastTxes;
-CDarkSendActiveMasternodeManager activeMasternodeManager;
+extern CDarkSendActiveMasternodeManager activeMasternodeManager;
 
 //specific messages for the Darksend protocol
 void ProcessMessageDarksend(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
@@ -435,13 +435,14 @@ public:
     void DoConsensusVoteForAllActiveMasternodes(CTransaction& tx, int64_t nBlockHeight);
     void EnableHotColdMasterNode(CTxIn& newVin, CService& newService);
     CActiveMasternode* FindOrCreateActiveMasternode(CTxIn& newVin);
+    std::vector<CActiveMasternode*> FindOrCreateActiveMasternodesFromCoins();
     std::string GetActiveMasternodeStatusMessages();
     CTxIn GetPrimaryActiveMasternodeVin();
     void ManageStatuses();
     bool StopAllActiveMasternodes(std::string& errorMessage);
 private:
     map<std::string, CActiveMasternode*> mapActiveMasternodes;
-}
+};
 
 void ConnectToDarkSendMasterNodeWinner();
 

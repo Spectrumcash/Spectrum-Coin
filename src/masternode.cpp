@@ -486,11 +486,11 @@ int GetMasternodeByRank(int findRank, int64_t nBlockHeight, int minProtocol)
 
 int GetMasternodeRank(CTxIn& vin, int64_t nBlockHeight, int minProtocol)
 {
-    std::vector<pair<unsigned int, CTxIn>> vecMasternodeScores = GetMasternodeScores(nBlockHeight, minProtocol);
+    std::vector<pair<unsigned int, CTxIn> > vecMasternodeScores = GetMasternodeScores(nBlockHeight, minProtocol);
     return GetMasternodeRank(vin, vecMasternodeScores);
 }
 
-    int GetMasternodeRank(CTxIn& vin, std::vector<pair<unsigned int, CTxIn>>& vecMasternodeScores)
+    int GetMasternodeRank(CTxIn& vin, std::vector<pair<unsigned int, CTxIn> >& vecMasternodeScores)
 {
     unsigned int rank = 0;
     BOOST_FOREACH (PAIRTYPE(unsigned int, CTxIn)& s, vecMasternodeScores)
@@ -503,9 +503,9 @@ int GetMasternodeRank(CTxIn& vin, int64_t nBlockHeight, int minProtocol)
     }
     return -1;
 }
-std::vector<pair<unsigned int, CTxIn>> GetMasternodeScores(int64_t nBlockHeight, int minProtocol)
+std::vector<pair<unsigned int, CTxIn> > GetMasternodeScores(int64_t nBlockHeight, int minProtocol)
 {
-    std::vector<pair<unsigned int, CTxIn>> vecMasternodeScores;
+    std::vector<pair<unsigned int, CTxIn> > vecMasternodeScores;
     BOOST_FOREACH(CMasterNode& mn, vecMasternodes) 
     {
         mn.Check();

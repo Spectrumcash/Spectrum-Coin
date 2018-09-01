@@ -820,7 +820,7 @@ void CDarkSendPool::CheckTimeout(){
     if(state == POOL_STATUS_QUEUE && sessionUsers == GetMaxPoolTransactions()) {
         CDarksendQueue dsq;
         dsq.nDenom = sessionDenom;
-        dstx.vin = activeMasternodeManager.GetPrimaryActiveMasternodeVin();
+        dsq.vin = activeMasternodeManager.GetPrimaryActiveMasternodeVin();
         dsq.time = GetTime();
         dsq.ready = true;
         dsq.Sign();
@@ -1814,7 +1814,7 @@ bool CDarkSendPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColla
             //broadcast that I'm accepting entries, only if it's the first entry though
             CDarksendQueue dsq;
             dsq.nDenom = nDenom;
-            dstx.vin = activeMasternodeManager.GetPrimaryActiveMasternodeVin();
+            dsq.vin = activeMasternodeManager.GetPrimaryActiveMasternodeVin();
             dsq.time = GetTime();
             dsq.Sign();
             dsq.Relay();
@@ -2133,17 +2133,14 @@ CActiveMasternode* CDarkSendActiveMasternodeManager::FindOrCreateActiveMasternod
 }
 std::vector<CActiveMasternode*> CDarkSendActiveMasternodeManager::FindOrCreateActiveMasternodesFromCoins()
 {
-    std::vector<COutput> possibleCoins = CActiveMasternode().SelectCoinsMasternode();
-    std::vector<CActiveMasternode*> activeMasernodes;
-    BOOST_FOREACH(COutput& out, possibleCoins) {
-        CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
-                FindOrCreateActiveMasternode(vin);
-    }
-            for (std::map<std::string, CActiveMasternode*>::iterator active = mapActiveMasternodes.begin(); active != mapActiveMasternodes.end(); active++)
-    {
-        activeMasernodes.push_back(active->second);
-    }
-    return activeMasernodes;
+std::vector<COutput> possibleCoins = CActiveMasternode().SelectCoinsMasternode();
+std::vector<CActiveMasternode*> activeMasernodes;
+BOOST_FOREACH(COutput& out, possibleCoins) {
+CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
+CActiveMasternode* activeMasternode = FindOrCreateActiveMasternode(vin);
+activeMasernodes.push_back(activeMasternode);
+}
+return activeMasernodes;
 }
 std::string CDarkSendActiveMasternodeManager::GetActiveMasternodeStatusMessages()
 {
