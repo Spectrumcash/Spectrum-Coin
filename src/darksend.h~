@@ -441,7 +441,7 @@ public:
     bool StopAllActiveMasternodes(std::string& errorMessage);
 private:
     map<std::string, CActiveMasternode*> mapActiveMasternodes;
-}
+};
 
 void ConnectToDarkSendMasterNodeWinner();
 
