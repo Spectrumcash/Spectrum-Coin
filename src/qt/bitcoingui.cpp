@@ -452,6 +452,7 @@ void BitcoinGUI::createToolBars()
     //header->setMaximumSize(48,48);
     //header->setScaledContents(true);
     //toolbar->addWidget(header);
+	/* Remove part on black theme to make work with swappable theme
 	if (fUseBlackTheme)
     {
         QWidget* header = new QWidget();
@@ -461,6 +462,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addWidget(header);
         toolbar->addWidget(makeToolBarSpacer());
     }
+    */ 
     //QMenu *toolbarMenu = new QMenu();
     //toolbarMenu->addAction(overviewAction);
     //toolbarMenu->addAction(receiveCoinsAction);
