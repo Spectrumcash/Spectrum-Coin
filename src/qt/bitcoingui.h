@@ -108,6 +108,15 @@ private:
     RPCConsole *rpcConsole;
 
     QMovie *syncIconMovie;
+
+    /* Themes support */
+QString selectedTheme;
+QStringList themesList;
+// Path to directory where all themes are (usable for some common images?...)
+QString themesDir;
+QAction *customActions[100];
+/* Themes support */
+
     /** Keep track of previous number of blocks, to detect progress */
     int prevBlocks;
 
@@ -204,6 +213,12 @@ private slots:
 
     void updateWeight();
     void updateStakingIcon();
+
+    /** Load external QSS stylesheet */
+void changeTheme(QString theme);
+void loadTheme(QString theme);
+void listThemes(QStringList& themes);
+void keyPressEvent(QKeyEvent * e);
 
     /** called by a timer to check if fRequestShutdown has been set **/
     void detectShutdown();

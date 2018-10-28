@@ -416,7 +416,7 @@ bool CActiveMasternode::EnableHotColdMasterNode(CTxIn& newVin, CService& newServ
 
     return true;
 }
-
+}
 std::string CActiveMasternode::GetStatusMessage()
 {
     if(this->status == MASTERNODE_IS_CAPABLE) return "successfully started masternode";
@@ -426,4 +426,3 @@ std::string CActiveMasternode::GetStatusMessage()
     if(this->status == MASTERNODE_SYNC_IN_PROCESS) return "sync in process. Must wait until client is synced to start.";
     if(this->status == MASTERNODE_REMOTELY_ENABLED) return "masternode started remotely";
     return "unkown";
-}

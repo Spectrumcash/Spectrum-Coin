@@ -350,7 +350,7 @@ std::vector<CActiveMasternode*> activeMasternodes = activeMasternodeManager.Find
         }
         pwalletMain->Lock();
 
-        
+        }
 
       return activeMasternodeManager.GetActiveMasternodeStatusMessages();
     }
