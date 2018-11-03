@@ -1098,6 +1098,7 @@ void MapPort(bool)
 static const char *strDNSSeed[][2] = {
     {"Spectrum Seed", "149.28.57.142"},
     {"Spectrum Seed", "95.179.142.200"},
+    {"Spectrum Seed", "seed.spectrumcash.cc"}
 
  };
 
