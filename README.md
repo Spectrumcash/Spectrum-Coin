@@ -2,7 +2,7 @@
 
 ![Spectrum](logo.png)
 
-Spectrum is a Masternode-PoS-based cryptocurrency.
+Spectrum is a Masternode-PoS based cryptocurrency.
 
 Block Spacing: `90 Seconds`
 
