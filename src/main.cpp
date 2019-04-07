@@ -1159,30 +1159,28 @@ int64_t GetProofOfWorkReward(int64_t nFees, unsigned int nHeight)
 }
 
 // miner's coin stake reward based on coin age spent (coin-days)
-int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, unsigned int nHeight)
-{
-    int64_t nSubsidy=0;
-    if (nHeight < 299999)
+int64_t nSubsidy=0;
+    if (nHeight < 300000)
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 	}
-	else if (nHeight <600000 )
+	else if (nHeight >=300000 and nHeight <600000 )
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 25 / (365 * 33 + 8);
 	}
-	else if (nHeight <900000 )
+	else if (nHeight >=600000 and nHeight <900000 )
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 20 / (365 * 33 + 8);
 	}
-	else if (nHeight <1200000 )
+	else if (nHeight >=900000 and nHeight <1200000 )
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 15 / (365 * 33 + 8);
 	}
-	else if (nHeight <1500000 )
+	else if (nHeight >=1200000 and nHeight <1500000 )
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 10 / (365 * 33 + 8);
 	}
-	else if (nHeight <1800000 )
+	else if (nHeight >=1500000 and nHeight <1800000 )
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 8 / (365 * 33 + 8);
 	}
@@ -1190,11 +1188,6 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, unsigned int nHei
 	{
 		nSubsidy = nCoinAge * COIN_YEAR_REWARD * 5 / (365 * 33 + 8);
 	}
-    LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
-
-    return nSubsidy + nFees;
-}
-
 
 static const int64_t nTargetTimespan = 10 * 60;  // 16 mins
 
